@@ -19,6 +19,9 @@
 		D458072C17C14CF80082C55E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D458072A17C14CF80082C55E /* MainStoryboard_iPhone.storyboard */; };
 		D458072F17C14CF80082C55E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D458072D17C14CF80082C55E /* MainStoryboard_iPad.storyboard */; };
 		D458073217C14CF80082C55E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D458073117C14CF80082C55E /* ViewController.m */; };
+		D458073A17C14EAF0082C55E /* EPRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = D458073917C14EAF0082C55E /* EPRouteController.m */; };
+		D458073C17C151F90082C55E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458073B17C151F90082C55E /* CoreBluetooth.framework */; };
+		D458073E17C151FF0082C55E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458073D17C151FF0082C55E /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,10 @@
 		D458072E17C14CF80082C55E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		D458073017C14CF80082C55E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D458073117C14CF80082C55E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D458073817C14EAF0082C55E /* EPRouteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPRouteController.h; sourceTree = "<group>"; };
+		D458073917C14EAF0082C55E /* EPRouteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPRouteController.m; sourceTree = "<group>"; };
+		D458073B17C151F90082C55E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		D458073D17C151FF0082C55E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D458073E17C151FF0082C55E /* AVFoundation.framework in Frameworks */,
+				D458073C17C151F90082C55E /* CoreBluetooth.framework in Frameworks */,
 				D458071317C14CF80082C55E /* UIKit.framework in Frameworks */,
 				D458071517C14CF80082C55E /* Foundation.framework in Frameworks */,
 				D458071717C14CF80082C55E /* CoreGraphics.framework in Frameworks */,
@@ -58,6 +67,8 @@
 		D458070617C14CF80082C55E = {
 			isa = PBXGroup;
 			children = (
+				D458073D17C151FF0082C55E /* AVFoundation.framework */,
+				D458073B17C151F90082C55E /* CoreBluetooth.framework */,
 				D458071817C14CF80082C55E /* EarPipe */,
 				D458071117C14CF80082C55E /* Frameworks */,
 				D458071017C14CF80082C55E /* Products */,
@@ -92,6 +103,8 @@
 				D458073017C14CF80082C55E /* ViewController.h */,
 				D458073117C14CF80082C55E /* ViewController.m */,
 				D458071917C14CF80082C55E /* Supporting Files */,
+				D458073817C14EAF0082C55E /* EPRouteController.h */,
+				D458073917C14EAF0082C55E /* EPRouteController.m */,
 			);
 			path = EarPipe;
 			sourceTree = "<group>";
@@ -180,6 +193,7 @@
 				D458071F17C14CF80082C55E /* main.m in Sources */,
 				D458072317C14CF80082C55E /* AppDelegate.m in Sources */,
 				D458073217C14CF80082C55E /* ViewController.m in Sources */,
+				D458073A17C14EAF0082C55E /* EPRouteController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
