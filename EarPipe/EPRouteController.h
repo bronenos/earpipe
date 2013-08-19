@@ -10,7 +10,18 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 
 
+typedef enum {
+	EPModeHeadsetToDevice,
+	EPModeDeviceToHeadset,
+	EPModeDeviceToDevice,
+} EPMode;
+
+
 @interface EPRouteController : NSObject <CBCentralManagerDelegate>
+@property(nonatomic, assign) EPMode mode;
+
++ (EPRouteController *)sharedInstance;
+
 - (void)startScanning;
 - (void)stopScanning;
 @end

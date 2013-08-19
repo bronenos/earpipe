@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4488.2" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <development version="4600" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kxs-pe-hA0">
+                                <rect key="frame" x="33" y="499" width="254" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="BT > iOS"/>
+                                    <segment title="iOS > BT"/>
+                                    <segment title="iOS > iOS"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onPipeModeChanged:" destination="2" eventType="valueChanged" id="uLg-U9-eq1"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sRO-5w-DYW">
+                                <rect key="frame" x="33" y="137" width="254" height="274"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="274" id="9BQ-sB-eZl"/>
+                                    <constraint firstAttribute="width" constant="254" id="hgO-bZ-Hv4"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sRO-5w-DYW" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="DvD-7b-YB3"/>
+                            <constraint firstAttribute="bottom" secondItem="kxs-pe-hA0" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="JPj-J3-Pmn"/>
+                            <constraint firstItem="sRO-5w-DYW" firstAttribute="leading" secondItem="kxs-pe-hA0" secondAttribute="leading" type="default" id="Lge-Ft-Y6c"/>
+                            <constraint firstItem="kxs-pe-hA0" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="hcb-xd-Yhb"/>
+                            <constraint firstItem="sRO-5w-DYW" firstAttribute="trailing" secondItem="kxs-pe-hA0" secondAttribute="trailing" type="default" id="jYP-08-Pxv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pipeModeSwitcher" destination="kxs-pe-hA0" id="EoX-ZI-Tc9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>

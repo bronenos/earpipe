@@ -7,23 +7,57 @@
 //
 
 #import "ViewController.h"
+#import "EPRouteController.h"
+
 
 @interface ViewController ()
-
+@property(nonatomic, strong) IBOutlet UISegmentedControl *pipeModeSwitcher;
+- (IBAction)onPipeModeChanged:(UISegmentedControl *)segcontrol;
 @end
 
-@implementation ViewController
 
+@implementation ViewController
+#pragma mark - View
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	[super viewDidLoad];
+	[self onPipeModeChanged:nil];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super viewDidAppear:animated];
+	[[EPRouteController sharedInstance] startScanning];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	[[EPRouteController sharedInstance] stopScanning];
+}
+
+
+#pragma mark - Table View
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return nil;
+}
+
+
+#pragma mark - User Actions
+- (IBAction)onPipeModeChanged:(UISegmentedControl *)segcontrol
+{
+	EPMode mode = (EPMode) self.pipeModeSwitcher.selectedSegmentIndex;
+	[EPRouteController sharedInstance].mode = mode;
+}
 @end
