@@ -34,6 +34,10 @@
                                     <constraint firstAttribute="height" constant="274" id="9BQ-sB-eZl"/>
                                     <constraint firstAttribute="width" constant="254" id="hgO-bZ-Hv4"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="Bqs-4r-62U"/>
+                                    <outlet property="delegate" destination="2" id="eTx-HZ-Sng"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -46,6 +50,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deviceListTable" destination="sRO-5w-DYW" id="ioP-Je-YaQ"/>
                         <outlet property="pipeModeSwitcher" destination="kxs-pe-hA0" id="EoX-ZI-Tc9"/>
                     </connections>
                 </viewController>
