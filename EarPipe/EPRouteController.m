@@ -7,7 +7,6 @@
 //
 
 #import <AVFoundation/AVAudioSession.h>
-#import <BluetoothManager/BluetoothManager.h>
 #import "EPRouteController.h"
 
 
@@ -15,21 +14,17 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 
 
 @interface EPRouteController()
-#if USE_PUBLIC_API
+@property(nonatomic, strong) GKSession *gamekitSession;
 @property(nonatomic, strong) CBPeripheralManager *bluetoothManager;
-#else
-@property(nonatomic, strong) BluetoothManager *bluetoothManager;
-#endif
 
-- (void)signForNotifications;
+- (void)GK_startScanning;
+- (void)BT_startScanning;
 @end
 
 
 @implementation EPRouteController
 {
-#	if USE_PUBLIC_API
 	dispatch_queue_t _bluetoothQueue;
-#	endif
 	NSMutableArray *_foundDeviceList;
 }
 
@@ -37,13 +32,8 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 - (id)init
 {
 	if ((self = [super init])) {
-#		if USE_PUBLIC_API
 		_bluetoothQueue = dispatch_queue_create("bluetooth-manager", 0);
 		self.bluetoothManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:_bluetoothQueue];
-#		else
-		self.bluetoothManager = [BluetoothManager sharedInstance];
-		[self signForNotifications];
-#		endif
 		
 		_foundDeviceList = [NSMutableArray new];
 	}
@@ -63,11 +53,6 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 	return __instance;
 }
 
-- (void)dealloc
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 
 #pragma mark - Public
 - (NSArray *)foundDeviceList
@@ -78,68 +63,82 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 
 - (void)startScanning
 {
-#	if USE_PUBLIC_API
-#	else
-	if (self.bluetoothManager.powered == NO) {
-		[self.bluetoothManager setPowered:YES];
+	switch (self.mode) {
+		case EPRouteModeDeviceToDevice:
+			[self GK_startScanning];
+			break;
+			
+		case EPRouteModeHeadsetToDevice:
+		case EPRouteModeDeviceToHeadset:
+			[self BT_startScanning];
+			break;
 	}
-	
-	if (self.bluetoothManager.enabled == NO) {
-		[self.bluetoothManager setEnabled:YES];
-	}
-#	endif
 }
 
 - (void)stopScanning
 {
-#	if USE_PUBLIC_API
-	[self.bluetoothManager stopAdvertising];
-#	else
-	[self.bluetoothManager setDeviceScanningEnabled:NO];
-#	endif
 }
 
 
 #pragma mark - Internal
-static void cb_anyNoteCatcher(CFNotificationCenterRef center,
-						   void *observer,
-						   CFStringRef name,
-						   const void *object,
-						   CFDictionaryRef userInfo) {
-    NSLog(@"Notification Name:%@ Data:%@", name, userInfo);
+- (void)GK_startScanning
+{
+	GKPeerPickerController *picker = [[GKPeerPickerController alloc] init];
+	picker.delegate = self;
+	picker.connectionTypesMask = GKPeerPickerConnectionTypeNearby;
+	[picker show];
 }
 
-- (void)signForNotifications
+- (void)BT_startScanning
 {
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(onBluetoothAvailabilityChanged:)
-												 name:@"BluetoothAvailabilityChangedNotification"
-											   object:nil];
+	// ...
+}
+
+
+#pragma mark - GameKit delegate
+- (GKSession *)peerPickerController:(GKPeerPickerController *)picker sessionForConnectionType:(GKPeerPickerConnectionType)type
+{
+	GKSession *session = [[GKSession alloc] initWithSessionID:@"BTSessionID"
+												  displayName:nil
+												  sessionMode:GKSessionModePeer];
+	return session;
+}
+
+- (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session
+{
+	session.delegate = self;
+	self.gamekitSession = session;
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(onBluetoothDeviceDiscovered:)
-												 name:@"BluetoothDeviceDiscoveredNotification"
-											   object:nil];
-	
-	CFNotificationCenterAddObserver(CFNotificationCenterGetLocalCenter(),
-                                    NULL,
-                                    cb_anyNoteCatcher,
-                                    NULL,
-                                    NULL,
-                                    CFNotificationSuspensionBehaviorDeliverImmediately);
+	picker.delegate = nil;
+	[picker dismiss];
+}
+
+- (void)session:(GKSession *)session peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state
+{
+	if (state == GKPeerStateConnected) {
+		[session setDataReceiveHandler:self withContext:NULL];
+	}
+	else {
+		session.delegate = nil;
+		self.gamekitSession = nil;
+	}
+}
+
+- (void)receiveData:(NSData *)data fromPeer:(NSString *)peer inSession:(GKSession *)session context:(void *)context
+{
+	// ...
 }
 
 
 #pragma mark - Bluetooth Delegate
-#if USE_PUBLIC_API
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral
 {
 	const BOOL isPowered = (peripheral.state == CBPeripheralManagerStatePoweredOn);
 	NSLog(@"%s -> is %@ powered with state %d", __FUNCTION__, (isPowered ? @"" : @"not"), peripheral.state);
 	
 	if (isPowered) {
-		NSArray *services = nil; // @[ [CBUUID UUIDWithString:@"180A"] ];
-		NSDictionary *options = nil; // @{ CBCentralManagerScanOptionAllowDuplicatesKey:@(NO) };
+//		NSArray *services = nil; // @[ [CBUUID UUIDWithString:@"180A"] ];
+//		NSDictionary *options = nil; // @{ CBCentralManagerScanOptionAllowDuplicatesKey:@(NO) };
 		[self.bluetoothManager startAdvertising:nil];
 	}
 }
@@ -153,24 +152,5 @@ static void cb_anyNoteCatcher(CFNotificationCenterRef center,
 {
 	NSLog(@"%s -> %@", __FUNCTION__, error);
 }
-#else
-- (void)onBluetoothAvailabilityChanged:(NSNotification *)note
-{
-	if (self.bluetoothManager.enabled) {
-		[_foundDeviceList removeAllObjects];
-		
-		[self.bluetoothManager setDeviceScanningEnabled:YES];
-		[self.bluetoothManager scanForServices:0xFFFFFFFF];
-	}
-}
-
-- (void)onBluetoothDeviceDiscovered:(NSNotification *)note
-{
-	BluetoothDevice *device = (id) note.object;
-	[_foundDeviceList addObject:device];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:EPRouteControllerDeviceDiscovered object:self];
-}
-#endif
 
 @end

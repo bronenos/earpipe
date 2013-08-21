@@ -22,7 +22,7 @@
 		D458073A17C14EAF0082C55E /* EPRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = D458073917C14EAF0082C55E /* EPRouteController.m */; };
 		D458073C17C151F90082C55E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458073B17C151F90082C55E /* CoreBluetooth.framework */; };
 		D458073E17C151FF0082C55E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458073D17C151FF0082C55E /* AVFoundation.framework */; };
-		D45E734A17C343C000B00CB0 /* BluetoothManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D45E734917C343C000B00CB0 /* BluetoothManager.framework */; };
+		D4A6830317C49661009B68F1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A6830217C49660009B68F1 /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +48,7 @@
 		D458073B17C151F90082C55E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		D458073D17C151FF0082C55E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D45E734917C343C000B00CB0 /* BluetoothManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothManager.framework; path = System/Library/PrivateFrameworks/BluetoothManager.framework; sourceTree = SDKROOT; };
+		D4A6830217C49660009B68F1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D45E734A17C343C000B00CB0 /* BluetoothManager.framework in Frameworks */,
+				D4A6830317C49661009B68F1 /* GameKit.framework in Frameworks */,
 				D458073E17C151FF0082C55E /* AVFoundation.framework in Frameworks */,
 				D458073C17C151F90082C55E /* CoreBluetooth.framework in Frameworks */,
 				D458071317C14CF80082C55E /* UIKit.framework in Frameworks */,
@@ -89,6 +90,7 @@
 		D458071117C14CF80082C55E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4A6830217C49660009B68F1 /* GameKit.framework */,
 				D45E734917C343C000B00CB0 /* BluetoothManager.framework */,
 				D458071217C14CF80082C55E /* UIKit.framework */,
 				D458071417C14CF80082C55E /* Foundation.framework */,

@@ -9,28 +9,21 @@
 #define USE_PUBLIC_API 0
 
 #import <Foundation/Foundation.h>
-#if USE_PUBLIC_API
 #import <CoreBluetooth/CoreBluetooth.h>
-#else
-#import <BluetoothManager/BluetoothDevice.h>
-#endif
+#import <GameKit/GameKit.h>
 
 
 extern NSString * const EPRouteControllerDeviceDiscovered;
 
 typedef enum {
-	EPModeHeadsetToDevice,
-	EPModeDeviceToHeadset,
-	EPModeDeviceToDevice,
-} EPMode;
+	EPRouteModeDeviceToDevice,
+	EPRouteModeHeadsetToDevice,
+	EPRouteModeDeviceToHeadset,
+} EPRouteMode;
 
 
-@interface EPRouteController : NSObject <NSObject
-#if USE_PUBLIC_API
-, CBPeripheralManagerDelegate, CBPeripheralDelegate
-#endif
->
-@property(nonatomic, assign) EPMode mode;
+@interface EPRouteController : NSObject <GKPeerPickerControllerDelegate, GKSessionDelegate, CBPeripheralManagerDelegate, CBPeripheralDelegate>
+@property(nonatomic, assign) EPRouteMode mode;
 @property(nonatomic, readonly) NSArray *foundDeviceList;
 
 + (EPRouteController *)sharedInstance;

@@ -13,18 +13,16 @@
 @interface ViewController ()
 @property(nonatomic, strong) IBOutlet UITableView *deviceListTable;
 @property(nonatomic, strong) IBOutlet UISegmentedControl *pipeModeSwitcher;
+
+- (EPRouteMode)routeModeFromSwitcherIndex:(NSInteger)index;
+
 - (IBAction)onPipeModeChanged:(UISegmentedControl *)segcontrol;
+- (IBAction)doStartScan;
+- (IBAction)doStopScan;
 @end
 
 
 @implementation ViewController
-#pragma mark - Memory
-- (void)dealloc
-{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-
 #pragma mark - View
 - (void)viewDidLoad
 {
@@ -37,16 +35,29 @@
 											   object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-	[[EPRouteController sharedInstance] startScanning];
-}
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//	[super viewDidAppear:animated];
+//	[[EPRouteController sharedInstance] startScanning];
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated
+//{
+//	[super viewWillDisappear:animated];
+//	[[EPRouteController sharedInstance] stopScanning];
+//}
 
-- (void)viewWillDisappear:(BOOL)animated
+
+#pragma mark - Internal
+- (EPRouteMode)routeModeFromSwitcherIndex:(NSInteger)index
 {
-	[super viewWillDisappear:animated];
-	[[EPRouteController sharedInstance] stopScanning];
+	EPRouteMode modes[] = {
+		EPRouteModeDeviceToDevice,
+		EPRouteModeHeadsetToDevice,
+		EPRouteModeDeviceToHeadset
+	};
+	
+	return modes[index];
 }
 
 
@@ -64,12 +75,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	NSArray *deviceList = [EPRouteController sharedInstance].foundDeviceList;
-	BluetoothDevice *device = deviceList[indexPath.row];
-	
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
-	cell.textLabel.text = device.name;
-	cell.detailTextLabel.text = device.address;
 	return cell;
 }
 
@@ -77,8 +83,18 @@
 #pragma mark - User Actions
 - (IBAction)onPipeModeChanged:(UISegmentedControl *)segcontrol
 {
-	EPMode mode = (EPMode) self.pipeModeSwitcher.selectedSegmentIndex;
-	[EPRouteController sharedInstance].mode = mode;
+	[[EPRouteController sharedInstance] stopScanning];
+	[EPRouteController sharedInstance].mode = [self routeModeFromSwitcherIndex:segcontrol.selectedSegmentIndex];
+}
+
+- (IBAction)doStartScan
+{
+	[[EPRouteController sharedInstance] startScanning];
+}
+
+- (IBAction)doStopScan
+{
+	[[EPRouteController sharedInstance] stopScanning];
 }
 
 
