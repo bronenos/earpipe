@@ -23,6 +23,7 @@
 		D458073C17C151F90082C55E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458073B17C151F90082C55E /* CoreBluetooth.framework */; };
 		D458073E17C151FF0082C55E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458073D17C151FF0082C55E /* AVFoundation.framework */; };
 		D4A6830317C49661009B68F1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4A6830217C49660009B68F1 /* GameKit.framework */; };
+		D4D4EAD317C7405200DD4195 /* EPRecorderController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D4EAD217C7405200DD4195 /* EPRecorderController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		D458073D17C151FF0082C55E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D45E734917C343C000B00CB0 /* BluetoothManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothManager.framework; path = System/Library/PrivateFrameworks/BluetoothManager.framework; sourceTree = SDKROOT; };
 		D4A6830217C49660009B68F1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		D4D4EAD117C7405200DD4195 /* EPRecorderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EPRecorderController.h; sourceTree = "<group>"; };
+		D4D4EAD217C7405200DD4195 /* EPRecorderController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EPRecorderController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +114,8 @@
 				D458071917C14CF80082C55E /* Supporting Files */,
 				D458073817C14EAF0082C55E /* EPRouteController.h */,
 				D458073917C14EAF0082C55E /* EPRouteController.m */,
+				D4D4EAD117C7405200DD4195 /* EPRecorderController.h */,
+				D4D4EAD217C7405200DD4195 /* EPRecorderController.m */,
 			);
 			path = EarPipe;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 				D458071F17C14CF80082C55E /* main.m in Sources */,
 				D458072317C14CF80082C55E /* AppDelegate.m in Sources */,
 				D458073217C14CF80082C55E /* ViewController.m in Sources */,
+				D4D4EAD317C7405200DD4195 /* EPRecorderController.m in Sources */,
 				D458073A17C14EAF0082C55E /* EPRouteController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

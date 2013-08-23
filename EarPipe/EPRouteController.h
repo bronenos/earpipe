@@ -30,4 +30,5 @@ typedef enum {
 
 - (void)startScanning;
 - (void)stopScanning;
+- (void)sendData;
 @end

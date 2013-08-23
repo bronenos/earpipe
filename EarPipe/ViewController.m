@@ -19,6 +19,7 @@
 - (IBAction)onPipeModeChanged:(UISegmentedControl *)segcontrol;
 - (IBAction)doStartScan;
 - (IBAction)doStopScan;
+- (IBAction)doSendData;
 @end
 
 
@@ -95,6 +96,11 @@
 - (IBAction)doStopScan
 {
 	[[EPRouteController sharedInstance] stopScanning];
+}
+
+- (IBAction)doSendData
+{
+	[[EPRouteController sharedInstance] sendData];
 }
 
 

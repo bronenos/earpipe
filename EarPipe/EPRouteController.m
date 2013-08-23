@@ -18,7 +18,10 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 @property(nonatomic, strong) CBPeripheralManager *bluetoothManager;
 
 - (void)GK_startScanning;
+- (void)GK_stopScanning;
+
 - (void)BT_startScanning;
+- (void)BT_stopScanning;
 @end
 
 
@@ -77,6 +80,30 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 
 - (void)stopScanning
 {
+	switch (self.mode) {
+		case EPRouteModeDeviceToDevice:
+			[self GK_stopScanning];
+			break;
+			
+		case EPRouteModeHeadsetToDevice:
+		case EPRouteModeDeviceToHeadset:
+			[self BT_stopScanning];
+			break;
+	}
+}
+
+- (void)sendData
+{
+	if (self.mode != EPRouteModeDeviceToDevice) {
+		return;
+	}
+	
+	if (self.gamekitSession == nil) {
+		return;
+	}
+	
+	NSData *data = [@"Hello" dataUsingEncoding:NSUTF8StringEncoding];
+	[self.gamekitSession sendDataToAllPeers:data withDataMode:GKSendDataReliable error:nil];
 }
 
 
@@ -89,7 +116,19 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 	[picker show];
 }
 
+- (void)GK_stopScanning
+{
+	[self.gamekitSession disconnectFromAllPeers];
+	self.gamekitSession.delegate = nil;
+	self.gamekitSession = nil;
+}
+
 - (void)BT_startScanning
+{
+	// ...
+}
+
+- (void)BT_stopScanning
 {
 	// ...
 }
@@ -106,8 +145,9 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 
 - (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session
 {
-	session.delegate = self;
 	self.gamekitSession = session;
+	self.gamekitSession.delegate = self;
+	[self.gamekitSession setDataReceiveHandler:self withContext:NULL];
 	
 	picker.delegate = nil;
 	[picker dismiss];
@@ -115,11 +155,8 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 
 - (void)session:(GKSession *)session peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state
 {
-	if (state == GKPeerStateConnected) {
-		[session setDataReceiveHandler:self withContext:NULL];
-	}
-	else {
-		session.delegate = nil;
+	if (state == GKPeerStateDisconnected) {
+		self.gamekitSession.delegate = nil;
 		self.gamekitSession = nil;
 	}
 }
