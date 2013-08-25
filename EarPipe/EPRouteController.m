@@ -143,6 +143,11 @@ NSString * const EPRouteControllerDeviceDiscovered = @"EPRouteControllerDeviceDi
 	return session;
 }
 
+- (void)peerPickerControllerDidCancel:(GKPeerPickerController *)picker
+{
+	picker.delegate = nil;
+}
+
 - (void)peerPickerController:(GKPeerPickerController *)picker didConnectPeer:(NSString *)peerID toSession:(GKSession *)session
 {
 	self.gamekitSession = session;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4488.2" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4488.1" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
@@ -14,123 +14,51 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kxs-pe-hA0">
-                                <rect key="frame" x="33" y="499" width="254" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCK-ZO-ohd" userLabel="Button - Device Mode">
+                                <rect key="frame" x="40" y="428" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="iOS > iOS"/>
-                                    <segment title="BT > iOS"/>
-                                    <segment title="iOS > BT"/>
-                                </segments>
-                                <connections>
-                                    <action selector="onPipeModeChanged:" destination="2" eventType="valueChanged" id="uLg-U9-eq1"/>
-                                </connections>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sRO-5w-DYW">
-                                <rect key="frame" x="33" y="77" width="254" height="274"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="274" id="9BQ-sB-eZl"/>
-                                    <constraint firstAttribute="width" constant="254" id="cS0-cm-8OI"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="2" id="Bqs-4r-62U"/>
-                                    <outlet property="delegate" destination="2" id="eTx-HZ-Sng"/>
-                                </connections>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPK-MZ-KJA">
-                                <rect key="frame" x="33" y="383" width="110" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="T66-ob-D3E"/>
-                                    <constraint firstAttribute="width" constant="110" id="qCU-O2-6eM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Start">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="button_normal_80.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doStartScan" destination="2" eventType="touchUpInside" id="jPW-yn-6VN"/>
+                                    <action selector="doSwitchToDeviceMode:" destination="2" eventType="touchUpInside" id="fAm-bI-rvZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j5b-hl-2L3">
-                                <rect key="frame" x="172" y="383" width="110" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYM-ij-hPo" userLabel="Button - Headset Mode">
+                                <rect key="frame" x="200" y="428" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="pd6-Kb-wUf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Stop">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" backgroundImage="button_normal_80.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="doStopScan" destination="2" eventType="touchUpInside" id="sCg-Nx-USJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wys-DI-A9V">
-                                <rect key="frame" x="172" y="440" width="110" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Send">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="doSendData" destination="2" eventType="touchUpInside" id="ob6-W1-WVD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C7d-OH-KHM">
-                                <rect key="frame" x="33" y="440" width="110" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Record">
-                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="doSendData" destination="2" eventType="touchUpInside" id="Njp-kJ-Y5l"/>
+                                    <action selector="doSwitchToHeadsetMode:" destination="2" eventType="touchUpInside" id="6UY-Ld-ubf"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QPK-MZ-KJA" firstAttribute="leading" secondItem="sRO-5w-DYW" secondAttribute="leading" type="default" id="3E7-2K-h4m"/>
-                            <constraint firstItem="C7d-OH-KHM" firstAttribute="leading" secondItem="kxs-pe-hA0" secondAttribute="leading" type="default" id="7ag-FS-5p2"/>
-                            <constraint firstAttribute="bottom" secondItem="kxs-pe-hA0" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="JPj-J3-Pmn"/>
-                            <constraint firstItem="C7d-OH-KHM" firstAttribute="trailing" secondItem="QPK-MZ-KJA" secondAttribute="trailing" type="default" id="KRi-xJ-zog"/>
-                            <constraint firstItem="Wys-DI-A9V" firstAttribute="leading" secondItem="j5b-hl-2L3" secondAttribute="leading" type="default" id="QBk-Eg-VyA"/>
-                            <constraint firstItem="sRO-5w-DYW" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" type="default" id="SZE-0b-Ezh"/>
-                            <constraint firstAttribute="bottom" secondItem="j5b-hl-2L3" secondAttribute="bottom" constant="122" id="T8u-iX-WXe"/>
-                            <constraint firstItem="sRO-5w-DYW" firstAttribute="trailing" secondItem="kxs-pe-hA0" secondAttribute="trailing" type="default" id="Z2O-SM-JNL"/>
-                            <constraint firstItem="C7d-OH-KHM" firstAttribute="leading" secondItem="QPK-MZ-KJA" secondAttribute="leading" type="default" id="aHT-T3-6A4"/>
-                            <constraint firstAttribute="bottom" secondItem="C7d-OH-KHM" secondAttribute="bottom" constant="65" id="br8-oU-uVF"/>
-                            <constraint firstItem="j5b-hl-2L3" firstAttribute="trailing" secondItem="Wys-DI-A9V" secondAttribute="trailing" type="default" id="hk0-G6-Tdk"/>
-                            <constraint firstAttribute="trailing" secondItem="j5b-hl-2L3" secondAttribute="trailing" constant="38" id="jf7-VV-DZ9"/>
-                            <constraint firstItem="C7d-OH-KHM" firstAttribute="baseline" secondItem="Wys-DI-A9V" secondAttribute="baseline" type="default" id="jlM-bH-86Z"/>
-                            <constraint firstItem="j5b-hl-2L3" firstAttribute="baseline" secondItem="QPK-MZ-KJA" secondAttribute="baseline" type="default" id="lDM-b0-itH"/>
-                            <constraint firstItem="sRO-5w-DYW" firstAttribute="top" secondItem="3" secondAttribute="top" constant="77" id="uAB-g8-EB0"/>
+                            <constraint firstItem="CCK-ZO-ohd" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="40" type="user" id="BmC-5q-Cev"/>
+                            <constraint firstItem="CCK-ZO-ohd" firstAttribute="top" secondItem="oYM-ij-hPo" secondAttribute="top" type="user" id="HrN-w3-qqw"/>
+                            <constraint firstAttribute="bottom" secondItem="CCK-ZO-ohd" secondAttribute="bottom" constant="40" type="user" id="QjA-IP-zgT"/>
+                            <constraint firstAttribute="trailing" secondItem="oYM-ij-hPo" secondAttribute="trailing" constant="40" type="user" id="YVK-BV-Pfw"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="deviceListTable" destination="sRO-5w-DYW" id="ioP-Je-YaQ"/>
-                        <outlet property="pipeModeSwitcher" destination="kxs-pe-hA0" id="EoX-ZI-Tc9"/>
+                        <outlet property="deviceModeButton" destination="CCK-ZO-ohd" id="5HC-8O-pjG"/>
+                        <outlet property="headsetModeButton" destination="oYM-ij-hPo" id="2cn-bA-pAg"/>
+                        <outletCollection property="modeButtons" destination="CCK-ZO-ohd" id="QA1-tH-feZ"/>
+                        <outletCollection property="modeButtons" destination="oYM-ij-hPo" id="hqb-ka-YUQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="button_normal_80.png" width="80" height="80"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
