@@ -10,11 +10,15 @@
 #import "EPRouteController.h"
 
 
-@interface ViewController ()
-@property(nonatomic, strong) IBOutlet UITableView *deviceListTable;
+@interface ViewController()
+@property(nonatomic, strong) IBOutlet UIView *modeContainer;
 @property(nonatomic, strong) IBOutlet UIButton *deviceModeButton;
 @property(nonatomic, strong) IBOutlet UIButton *headsetModeButton;
 @property(nonatomic, strong) IBOutletCollection(UIButton) NSArray *modeButtons;
+
+@property(nonatomic, strong) IBOutlet UIView *deviceModeContainer;
+@property(nonatomic, strong) IBOutlet UILabel *deviceName;
+@property(nonatomic, strong) IBOutlet UITableView *deviceListTable;
 
 - (IBAction)doSwitchToDeviceMode:(UIButton *)button;
 - (IBAction)doSwitchToHeadsetMode:(UIButton *)button;
@@ -43,6 +47,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	
+	[self.modeContainer.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 	
 	UIImage *normalImage = [UIImage imageNamed:@"button_normal_80.png"];
 	[self.deviceModeButton setBackgroundImage:normalImage forState:UIControlStateNormal];
