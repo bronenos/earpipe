@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D40B0D7917CBDFBC00162BAA /* MainContainer_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D40B0D7817CBDFBC00162BAA /* MainContainer_iPhone.xib */; };
 		D458071317C14CF80082C55E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458071217C14CF80082C55E /* UIKit.framework */; };
 		D458071517C14CF80082C55E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458071417C14CF80082C55E /* Foundation.framework */; };
 		D458071717C14CF80082C55E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458071617C14CF80082C55E /* CoreGraphics.framework */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D40B0D7817CBDFBC00162BAA /* MainContainer_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainContainer_iPhone.xib; sourceTree = "<group>"; };
 		D458070F17C14CF80082C55E /* EarPipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarPipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D458071217C14CF80082C55E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D458071417C14CF80082C55E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +123,7 @@
 				D458072217C14CF80082C55E /* AppDelegate.m */,
 				D458072A17C14CF80082C55E /* MainStoryboard_iPhone.storyboard */,
 				D458072D17C14CF80082C55E /* MainStoryboard_iPad.storyboard */,
+				D40B0D7817CBDFBC00162BAA /* MainContainer_iPhone.xib */,
 				D458073017C14CF80082C55E /* ViewController.h */,
 				D458073117C14CF80082C55E /* ViewController.m */,
 				D458071917C14CF80082C55E /* Supporting Files */,
@@ -208,6 +211,7 @@
 				D47EB8BF17CA2B3C00250B4B /* button_pressed_120.png in Resources */,
 				D47EB8BE17CA2B3C00250B4B /* button_normal_80.png in Resources */,
 				D47EB8BD17CA2B3C00250B4B /* button_pressed_80.png in Resources */,
+				D40B0D7917CBDFBC00162BAA /* MainContainer_iPhone.xib in Resources */,
 				D458072717C14CF80082C55E /* Default@2x.png in Resources */,
 				D458072917C14CF80082C55E /* Default-568h@2x.png in Resources */,
 				D458072C17C14CF80082C55E /* MainStoryboard_iPhone.storyboard in Resources */,
