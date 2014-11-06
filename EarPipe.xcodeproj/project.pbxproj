@@ -23,6 +23,7 @@
 		D458073A17C14EAF0082C55E /* EPRouteController.m in Sources */ = {isa = PBXBuildFile; fileRef = D458073917C14EAF0082C55E /* EPRouteController.m */; };
 		D458073C17C151F90082C55E /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458073B17C151F90082C55E /* CoreBluetooth.framework */; };
 		D458073E17C151FF0082C55E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D458073D17C151FF0082C55E /* AVFoundation.framework */; };
+		D475ED21199E644F0037FD3B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D475ED20199E644F0037FD3B /* AudioToolbox.framework */; };
 		D47EB8BD17CA2B3C00250B4B /* button_pressed_80.png in Resources */ = {isa = PBXBuildFile; fileRef = D47EB8B917CA2B3C00250B4B /* button_pressed_80.png */; };
 		D47EB8BE17CA2B3C00250B4B /* button_normal_80.png in Resources */ = {isa = PBXBuildFile; fileRef = D47EB8BA17CA2B3C00250B4B /* button_normal_80.png */; };
 		D47EB8BF17CA2B3C00250B4B /* button_pressed_120.png in Resources */ = {isa = PBXBuildFile; fileRef = D47EB8BB17CA2B3C00250B4B /* button_pressed_120.png */; };
@@ -55,6 +56,7 @@
 		D458073B17C151F90082C55E /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		D458073D17C151FF0082C55E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D45E734917C343C000B00CB0 /* BluetoothManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BluetoothManager.framework; path = System/Library/PrivateFrameworks/BluetoothManager.framework; sourceTree = SDKROOT; };
+		D475ED20199E644F0037FD3B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D47EB8B917CA2B3C00250B4B /* button_pressed_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_pressed_80.png; sourceTree = "<group>"; };
 		D47EB8BA17CA2B3C00250B4B /* button_normal_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_normal_80.png; sourceTree = "<group>"; };
 		D47EB8BB17CA2B3C00250B4B /* button_pressed_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_pressed_120.png; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D475ED21199E644F0037FD3B /* AudioToolbox.framework in Frameworks */,
 				D4A6830317C49661009B68F1 /* GameKit.framework in Frameworks */,
 				D458073E17C151FF0082C55E /* AVFoundation.framework in Frameworks */,
 				D458073C17C151F90082C55E /* CoreBluetooth.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		D458071117C14CF80082C55E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D475ED20199E644F0037FD3B /* AudioToolbox.framework */,
 				D4A6830217C49660009B68F1 /* GameKit.framework */,
 				D45E734917C343C000B00CB0 /* BluetoothManager.framework */,
 				D458071217C14CF80082C55E /* UIKit.framework */,
